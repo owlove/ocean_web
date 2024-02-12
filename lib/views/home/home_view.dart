@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ocean_app_web/views/home/program_info.dart';
 import 'package:ocean_app_web/views/tickets/tickets_view.dart';
 import 'package:ocean_app_web/views/gallery/gallery_view.dart';
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
 
 class ProgInfo {
   final String name;
@@ -292,78 +294,59 @@ Widget _helpInformation() {
 }
 
 Widget _bottomDescription(context) {
-  return Container(
-    height: 200,
-    color: Colors.blue[800],
-    child: Row(
-      children: [
-        Expanded(
-          child: Container(
-            margin: EdgeInsets.all(50),
-            child: Column(children: [
-              Text(
-                "Контакты:",
-                style: TextStyle(
-                    color: Color.fromRGBO(182, 217, 239, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    decoration: TextDecoration.underline),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 20),
-                child: Text(
-                  "Телефон: +7 908 00 00 404",
+  return Footer(
+    child: Container(
+      height: 200,
+      //color: Colors.blue[800],
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(50),
+              child: Column(children: [
+                Text(
+                  "Контакты:",
+                  style: TextStyle(
+                      color: Color.fromRGBO(182, 217, 239, 1),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      decoration: TextDecoration.underline),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  child: Text(
+                    "Телефон: +7 908 00 00 404",
+                    style: TextStyle(
+                        color: Color.fromRGBO(182, 217, 239, 1),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                ),
+                Text(
+                  "Адрес: ул. Окулова, д. 3",
                   style: TextStyle(
                       color: Color.fromRGBO(182, 217, 239, 1),
                       fontWeight: FontWeight.bold,
                       fontSize: 15),
                 ),
-              ),
-              Text(
-                "Адрес: ул. Окулова, д. 3",
-                style: TextStyle(
-                    color: Color.fromRGBO(182, 217, 239, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
-              ),
-            ]),
+              ]),
+            ),
           ),
-        ),
-        Expanded(
-          child: Container(
-            margin: EdgeInsets.all(50),
-            child: Column(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    // Navigator.pushNamed(context, '/view/tickets/tickets_view');
-                    Route route =
-                        MaterialPageRoute(builder: (context) => TicketsView());
-                    Navigator.pushAndRemoveUntil(
-                        context, route, (route) => false);
-                  },
-                  child: Text(
-                    'Билеты',
-                    style: TextStyle(
-                      color: Color.fromRGBO(182, 217, 239, 1),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: TextButton(
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(50),
+              child: Column(
+                children: [
+                  TextButton(
                     onPressed: () {
-                      //Navigator.pushNamed(context, '/view/gallery/gallery_view');
-                      Route route = MaterialPageRoute(
-                          builder: (context) => GalleryView());
+                      // Navigator.pushNamed(context, '/view/tickets/tickets_view');
+                      Route route =
+                          MaterialPageRoute(builder: (context) => TicketsView());
                       Navigator.pushAndRemoveUntil(
                           context, route, (route) => false);
                     },
                     child: Text(
-                      'Галерея',
+                      'Билеты',
                       style: TextStyle(
                         color: Color.fromRGBO(182, 217, 239, 1),
                         fontWeight: FontWeight.bold,
@@ -372,12 +355,34 @@ Widget _bottomDescription(context) {
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: TextButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/view/gallery/gallery_view');
+                        Route route = MaterialPageRoute(
+                            builder: (context) => GalleryView());
+                        Navigator.pushAndRemoveUntil(
+                            context, route, (route) => false);
+                      },
+                      child: Text(
+                        'Галерея',
+                        style: TextStyle(
+                          color: Color.fromRGBO(182, 217, 239, 1),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
+    backgroundColor: Colors.blue[800],
   );
 }
